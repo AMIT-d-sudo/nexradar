@@ -2,6 +2,6 @@ pyqt5
 dnspython
 requests
 python-nmap
-tkinter
+dnspython
 cryptography
 psutil
