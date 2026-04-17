@@ -41,6 +41,13 @@ It identifies:
 - **Penetration Testers** – Automate post-scan analysis
 - **Students** – Learn how ML applies to cybersecurity
 
+## gui deshboard
+<img width="1366" height="768" alt="Screenshot_2026-04-17_04_51_54" src="https://github.com/user-attachments/assets/317302ff-ca9a-4bc8-a28a-1802520b1d8d" />
+
+AI deshboard
+<img width="1366" height="768" alt="Screenshot_2026-04-17_04_54_31" src="https://github.com/user-attachments/assets/0c03c6aa-f2aa-4c66-b05c-b252d30f1a57" />
+
+
 ## ⚙️ इंस्टॉलेशन (Installation)
 
 ```bash
