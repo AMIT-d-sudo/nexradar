@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXRADAR - Complete User Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #00ff41;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #0d0d0d;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0,255,65,0.1);
+            border: 1px solid #00ff41;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff41;
+            color: #00ff41;
+        }
+        
+        h2 {
+            color: #ffcc00;
+            border-left: 4px solid #00ff41;
+            padding-left: 15px;
+            margin: 25px 0 15px 0;
+            font-size: 1.5em;
+        }
+        
+        h3 {
+            color: #00ccff;
+            margin: 15px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .step {
+            background: #1a1a1a;
+            border-left: 4px solid #00ff41;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #00ff41;
+            color: #0a0a0a;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        code {
+            background: #0a0a0a;
+            padding: 2px 8px;
+            border-radius: 5px;
+            color: #ffcc00;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #00ff41;
+        }
+        
+        pre {
+            background: #0a0a0a;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 10px 0;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+        }
+        
+        .note {
+            background: #1a1a1a;
+            border-left: 4px solid #ffcc00;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            color: #ffcc00;
+        }
+        
+        .warning {
+            background: #1a1a1a;
+            border-left: 4px solid #ff3333;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            color: #ff3333;
+        }
+        
+        .success {
+            background: #1a1a1a;
+            border-left: 4px solid #00ff41;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            color: #00ff41;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            border: 1px solid #00ff41;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background: #00ff41;
+            color: #0a0a0a;
+        }
+        
+        .button-example {
+            display: inline-block;
+            background: #0a0a0a;
+            border: 1px solid #00ff41;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: bold;
+        }
+        
+        hr {
+            border-color: #00ff41;
+            margin: 20px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #00ff41;
+            font-size: 0.8em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            pre {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 NEXRADAR v2.0 - COMPLETE USER GUIDE</h1>
+        <p style="text-align: center; margin-bottom: 20px;">⚡ Ultimate Network Scanner | AI-Powered | Fast & Stealth ⚡</p>
+        
+        <hr>
+        
+        <!-- ========== SECTION 1: INSTALLATION ========== -->
+        <h2>📥 STEP 1: INSTALLATION</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Open Terminal</strong>
+            <pre>Ctrl + Alt + T</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Create NEXRADAR Directory</strong>
+            <pre>mkdir -p ~/Desktop/NEXRADAR
+cd ~/Desktop/NEXRADAR</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Install Required Dependencies</strong>
+            <pre>sudo apt update
+sudo apt install nmap -y
+sudo apt install python3-tk -y
+pip3 install python-nmap
+pip3 install cryptography
+pip3 install psutil
+pip3 install requests
+pip3 install dnspython</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Download/Create All Python Files</strong>
+            <pre>You need these files in the same directory:
+• main.py
+• gui.py
+• ai_dashboard.py
+• ai_integration.py
+• advanced_reporting.py
+• network_mapping.py
+• advanced_discovery.py
+• target_spec.py
+• host_discovery.py
+• scan_techniques.py
+• port_spec.py
+• service_version.py
+• os_detection.py
+• timing_performance.py
+• firewall_evasion.py
+• output_options.py
+• misc_options.py
+• script_scan.py
+• help_docs.py
+• evasion_techniques.py
+• target_management.py
+• data_analytics.py
+• security_features.py
+• web_interface.py
+• advanced_scanning.py
+• integration_features.py
+• gamification.py</pre>
+        </div>
+        
+        <div class="success">
+            💡 <strong>Quick Tip:</strong> Make sure all files are in the same folder before running!
+        </div>
+        
+        <hr>
+        
+        <!-- ========== SECTION 2: RUNNING THE TOOL ========== -->
+        <h2>🚀 STEP 2: RUNNING NEXRADAR</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Navigate to NEXRADAR Directory</strong>
+            <pre>cd ~/Desktop/NEXRADAR</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Run the Tool</strong>
+            <pre>python3 main.py</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Run with Root Privileges (Recommended for full features)</strong>
+            <pre>sudo python3 main.py</pre>
+        </div>
+        
+        <div class="warning">
+            ⚠️ <strong>Important:</strong> Running with sudo gives you access to advanced scan types (SYN scan, OS detection, etc.)
+        </div>
+        
+        <hr>
+        
+        <!-- ========== SECTION 3: QUICK SCAN TUTORIAL ========== -->
+        <h2>⚡ STEP 3: QUICK SCAN TUTORIAL</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Enter Target IP or Domain</strong>
+            <pre>Example targets:
+• 192.168.79.129 (Local machine)
+• scanme.nmap.org (Practice target - authorized)
+• google.com (External website)
+• 192.168.79.0/24 (Entire network)</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Use Quick Action Buttons (Top row)</strong>
+            <pre>┌─────────────────────────────────────────────────────────────┐
+│  🚀 ULTRA FAST SCAN  │  ⚡ FAST PORT SCAN  │  📋 LIST SCAN    │
+└─────────────────────────────────────────────────────────────┘
+
+• ULTRA FAST SCAN: 1 second, top 100 ports
+• FAST PORT SCAN: 2-3 seconds, fast timing
+• LIST SCAN: <1 second, just IP list (no ports)</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Or Use RUN Button (Custom scan)</strong>
+            <pre>1. Select options from LEFT PANEL (11 TABS)
+2. Click ▶ RUN button
+3. Wait for results</pre>
+        </div>
+        
+        <div class="success">
+            ✅ <strong>Success Indicator:</strong> You'll see "SCAN COMPLETED" message with scan time!
+        </div>
+        
+        <hr>
+        
+        <!-- ========== SECTION 4: SCAN OPTIONS EXPLAINED ========== -->
+        <h2>📋 STEP 4: SCAN OPTIONS (11 TABS)</h2>
+        
+        <table>
+            <tr>
+                <th>Tab</th>
+                <th>What it does</th>
+                <th>Common Options</th>
+            </tr>
+            <tr>
+                <td>🎯 TARGET</td>
+                <td>Target specification</td>
+                <td><code>-iL</code> (file input), <code>--exclude</code></td>
+            </tr>
+            <tr>
+                <td>🔍 HOST</td>
+                <td>Host discovery</td>
+                <td><code>-sn</code> (ping scan), <code>-Pn</code> (no ping), <code>-sL</code> (list scan)</td>
+            </tr>
+            <tr>
+                <td>⚡ SCAN</td>
+                <td>Scan techniques</td>
+                <td><code>-sS</code> (SYN), <code>-sT</code> (TCP), <code>-sU</code> (UDP)</td>
+            </tr>
+            <tr>
+                <td>🔌 PORT</td>
+                <td>Port specification</td>
+                <td><code>-p 1-1000</code>, <code>-F</code> (fast), <code>--top-ports</code></td>
+            </tr>
+            <tr>
+                <td>🛠 SERVICE</td>
+                <td>Version detection</td>
+                <td><code>-sV</code>, <code>--version-intensity</code></td>
+            </tr>
+            <tr>
+                <td>💻 OS</td>
+                <td>OS detection</td>
+                <td><code>-O</code></td>
+            </tr>
+            <tr>
+                <td>📜 SCRIPT</td>
+                <td>Script scanning</td>
+                <td><code>-sC</code>, <code>--script=vuln</code></td>
+            </tr>
+            <tr>
+                <td>⏱ TIMING</td>
+                <td>Speed control</td>
+                <td><code>-T4</code>, <code>--min-rate</code>, <code>--max-retries</code></td>
+            </tr>
+            <tr>
+                <td>🛡 FIREWALL</td>
+                <td>Evasion techniques</td>
+                <td><code>-f</code>, <code>-D</code>, <code>--mtu</code></td>
+            </tr>
+            <tr>
+                <td>📄 OUTPUT</td>
+                <td>Output formats</td>
+                <td><code>-oN</code>, <code>-oX</code>, <code>-oG</code></td>
+            </tr>
+            <tr>
+                <td>🔧 MISC</td>
+                <td>Miscellaneous</td>
+                <td><code>-6</code> (IPv6), <code>-A</code> (aggressive), <code>-n</code> (no DNS)</td>
+            </tr>
+        </table>
+        
+        <hr>
+        
+        <!-- ========== SECTION 5: AI FEATURES ========== -->
+        <h2>🤖 STEP 5: AI FEATURES</h2>
+        
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>AI ANALYZE - Vulnerability Detection</strong>
+            <pre>After scan completes, click "🤖 AI ANALYZE" button
+
+Output shows:
+• Risk Score (0-100)
+• Critical/High/Medium/Low classification
+• Open ports list
+• Security recommendations</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>AI DASHBOARD - All Advanced Features</strong>
+            <pre>Click "🎮 AI DASHBOARD" button → Opens 13 TABS:
+
+Tab 1: 🤖 AI FEATURES - Vulnerability prediction, CVE
+Tab 2: 📊 REPORTING - HTML, CSV, JSON, XML reports
+Tab 3: 🌐 NETWORK MAPPING - Topology, Attack surface
+Tab 4: 🔍 ADVANCED DISCOVERY - OSINT, Email, Cloud
+Tab 5: ⚡ PERFORMANCE - Parallel, Distributed scans
+Tab 6: 🛡 EVASION - Proxy, VPN, MAC randomization
+Tab 7: 🎯 TARGET MGMT - Projects, Assets, Lists
+Tab 8: 📊 ANALYTICS - Trends, Compliance, SLA
+Tab 9: 🔐 SECURITY - Encryption, Audit logs
+Tab 10: 🌐 WEB - Web dashboard, Cloud backup
+Tab 11: 🔧 ADVANCED - IPv6, Bluetooth, WiFi, IoT
+Tab 12: 📱 INTEGRATION - API, CI/CD, SIEM
+Tab 13: 🎮 GAMIFICATION - Achievements, Leaderboards</pre>
+        </div>
+        
+        <hr>
+        
+        <!-- ========== SECTION 6: EXAMPLE SCANS ========== -->
+        <h2>🎯 STEP 6: EXAMPLE SCANS</h2>
+        
+        <h3>Example 1: Quick Scan on Local Machine</h3>
+        <pre>Target: 192.168.79.129
+Click: 🚀 ULTRA FAST SCAN
+Result: 23 open ports found in 1 second</pre>
+        
+        <h3>Example 2: Full Port Scan with Version Detection</h3>
+        <pre>Target: 192.168.79.129
+PORT TAB: -p 1-1000 ✅
+SERVICE TAB: -sV ✅
+TIMING TAB: -T4 ✅
+Click: ▶ RUN
+Result: Service versions detected</pre>
+        
+        <h3>Example 3: Network Discovery</h3>
+        <pre>Target: 192.168.79.0/24
+HOST TAB: -sn ✅
+TIMING TAB: -T4 ✅
+Click: ▶ RUN
+Result: All live hosts in network</pre>
+        
+        <h3>Example 4: Vulnerability Scan</h3>
+        <pre>Target: 192.168.79.129
+SCRIPT TAB: --script=vuln ✅
+PORT TAB: -p 445,21,23 ✅
+Click: ▶ RUN
+Result: EternalBlue, FTP backdoor, Telnet vulnerabilities</pre>
+        
+        <h3>Example 5: Stealth Scan with Decoys</h3>
+        <pre>Target: 192.168.79.129
+SCAN TAB: -sS ✅
+FIREWALL TAB: -D RND:10 ✅
+TIMING TAB: -T2 ✅
+Click: ▶ RUN
+Result: Stealthy scan with decoy IPs</pre>
+        
+        <hr>
+        
+        <!-- ========== SECTION 7: INTERPRETING RESULTS ========== -->
+        <h2>📊 STEP 7: INTERPRETING RESULTS</h2>
+        
+        <h3>Risk Score Interpretation:</h3>
+        <table>
+            <tr>
+                <th>Score</th>
+                <th>Level</th>
+                <th>Action Required</th>
+            </tr>
+            <tr>
+                <td>70-100</td>
+                <td style="color: #ff3333;">🔴 CRITICAL</td>
+                <td>Immediate action required!</td>
+            </tr>
+            <tr>
+                <td>50-69</td>
+                <td style="color: #ff6600;">🟠 HIGH</td>
+                <td>Action required soon</td>
+            </tr>
+            <tr>
+                <td>30-49</td>
+                <td style="color: #ffcc00;">🟡 MEDIUM</td>
+                <td>Plan to address</td>
+            </tr>
+            <tr>
+                <td>0-29</td>
+                <td style="color: #00ff41;">🟢 LOW</td>
+                <td>Monitor regularly</td>
+            </tr>
+        </table>
+        
+        <h3>Port State Meanings:</h3>
+        <table>
+            <tr>
+                <th>State</th>
+                <th>Meaning</th>
+            </tr>
+            <tr>
+                <td>open</td>
+                <td>Service is running and accepting connections</td>
+            </tr>
+            <tr>
+                <td>closed</td>
+                <td>Port is reachable but no service listening</td>
+            </tr>
+            <tr>
+                <td>filtered</td>
+                <td>Firewall is blocking the port</td>
+            </tr>
+            <tr>
+                <td>unfiltered</td>
+                <td>Port is reachable but state unknown</td>
+            </tr>
+        </table>
+        
+        <hr>
+        
+        <!-- ========== SECTION 8: TROUBLESHOOTING ========== -->
+        <h2>🔧 STEP 8: TROUBLESHOOTING</h2>
+        
+        <div class="note">
+            <strong>❌ Error: "nmap: command not found"</strong><br>
+            <strong>Solution:</strong> <code>sudo apt install nmap -y</code>
+        </div>
+        
+        <div class="note">
+            <strong>❌ Error: "No module named 'tkinter'"</strong><br>
+            <strong>Solution:</strong> <code>sudo apt install python3-tk -y</code>
+        </div>
+        
+        <div class="note">
+            <strong>❌ Error: "Permission denied"</strong><br>
+            <strong>Solution:</strong> <code>sudo python3 main.py</code>
+        </div>
+        
+        <div class="note">
+            <strong>❌ Error: "You cannot use -F with -sL"</strong><br>
+            <strong>Solution:</strong> Use "📋 LIST SCAN" button instead of custom options
+        </div>
+        
+        <div class="note">
+            <strong>❌ Scan is very slow</strong><br>
+            <strong>Solution:</strong> Use ULTRA FAST SCAN button or add timing options:<br>
+            <code>-T4 --min-rate 5000 --max-retries 1 -n</code>
+        </div>
+        
+        <div class="note">
+            <strong>❌ AI DASHBOARD not opening</strong><br>
+            <strong>Solution:</strong> Make sure all files are in the same directory
+        </div>
+        
+        <hr>
+        
+        <!-- ========== SECTION 9: KEYBOARD SHORTCUTS ========== -->
+        <h2>⌨️ STEP 9: KEYBOARD SHORTCUTS</h2>
+        
+        <table>
+            <tr>
+                <th>Shortcut</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><code>Ctrl + R</code></td>
+                <td>Run Scan</td>
+            </tr>
+            <tr>
+                <td><code>Ctrl + S</code></td>
+                <td>Stop Scan</td>
+            </tr>
+            <tr>
+                <td><code>Ctrl + C</code></td>
+                <td>Clear Output</td>
+            </tr>
+            <tr>
+                <td><code>Ctrl + H</code></td>
+                <td>Show Help</td>
+            </tr>
+            <tr>
+                <td><code>Ctrl + D</code></td>
+                <td>Open AI Dashboard</td>
+            </tr>
+        </table>
+        
+        <hr>
+        
+        <!-- ========== SECTION 10: BEST PRACTICES ========== -->
+        <h2>💡 STEP 10: BEST PRACTICES</h2>
+        
+        <div class="success">
+            ✅ <strong>DO's:</strong>
+            <ul style="margin-left: 30px; margin-top: 10px;">
+                <li>Always run with <code>sudo</code> for full features</li>
+                <li>Use ULTRA FAST SCAN for quick checks</li>
+                <li>Use AI ANALYZE after every scan</li>
+                <li>Save reports for documentation</li>
+                <li>Use -n (no DNS) for faster scans</li>
+                <li>Use -T4 for good speed/stealth balance</li>
+            </ul>
+        </div>
+        
+        <div class="warning">
+            ❌ <strong>DON'Ts:</strong>
+            <ul style="margin-left: 30px; margin-top: 10px;">
+                <li>Don't scan unauthorized systems (illegal!)</li>
+                <li>Don't use -T5 on production networks</li>
+                <li>Don't forget to save important results</li>
+                <li>Don't ignore AI recommendations</li>
+                <li>Don't use -sL with -p (causes error)</li>
+            </ul>
+        </div>
+        
+        <hr>
+        
+        <!-- ========== SECTION 11: LEGAL DISCLAIMER ========== -->
+        <h2>⚖️ STEP 11: LEGAL DISCLAIMER</h2>
+        
+        <div class="warning">
+            <strong>⚠️ IMPORTANT LEGAL NOTICE:</strong><br><br>
+            This tool is for <strong>EDUCATIONAL PURPOSES ONLY</strong>.<br><br>
+            <strong>Only scan systems that you OWN or have WRITTEN PERMISSION to test.</strong><br><br>
+            Unauthorized scanning may be:<br>
+            • Illegal in your jurisdiction<br>
+     

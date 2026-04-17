@@ -1,0 +1,7 @@
+pyqt5
+dnspython
+requests
+python-nmap
+tkinter
+cryptography
+psutil

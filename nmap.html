@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nmap Features - Complete Guide with Examples</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        h2 {
+            background-color: #34495e;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            background-color: #e67e22;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .syntax {
+            font-family: 'Courier New', monospace;
+            background-color: #ecf0f1;
+            padding: 5px;
+            border-left: 4px solid #e67e22;
+            font-weight: bold;
+        }
+        .example {
+            font-family: 'Courier New', monospace;
+            background-color: #e8f8f5;
+            padding: 5px;
+            border-left: 4px solid #2ecc71;
+        }
+        .note {
+            background-color: #fcf3cf;
+            padding: 10px;
+            border-left: 5px solid #f1c40f;
+            margin: 10px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🔍 Nmap Features (Command Line Options) - पूरी जानकारी उदाहरण सहित</h1>
+    <p>यहाँ हर Nmap कमांड का <strong>syntax, example</strong> और यह बताया गया है कि <strong>उसका उपयोग करने से क्या होता है</strong>।</p>
+
+    <!-- TARGET SPECIFICATION -->
+    <h2>🎯 TARGET SPECIFICATION (लक्ष्य निर्दिष्ट करना)</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है? (What it does)</th></tr>
+        <tr><td>--exclude</td><td class="syntax">--exclude &lt;host1,host2&gt;<br><span class="example">nmap 192.168.1.1/24 --exclude 192.168.1.5,192.168.1.10</span></td><td>स्कैन से कुछ specific hosts को बाहर कर देता है।</td></tr>
+        <tr><td>--excludefile</td><td class="syntax">--excludefile &lt;file&gt;<br><span class="example">nmap 192.168.1.1/24 --excludefile exclude.txt</span></td><td>एक फ़ाइल से hosts को पढ़कर उन्हें स्कैन से बाहर करता है।</td></tr>
+        <tr><td>-iL</td><td class="syntax">-iL &lt;inputfile&gt;<br><span class="example">nmap -iL targets.txt</span></td><td>किसी फ़ाइल से target hosts की list पढ़ता है।</td></tr>
+    </table>
+
+    <!-- HOST DISCOVERY -->
+    <h2>🕵️ HOST DISCOVERY (होस्ट खोज)</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-sL</td><td class="syntax">-sL &lt;target&gt;<br><span class="example">nmap -sL 192.168.1.1/24</span></td><td>List Scan – बिना कोई packet भेजे सिर्फ targets की लिस्ट बनाता है।</td></tr>
+        <tr><td>-sn</td><td class="syntax">-sn &lt;target&gt;<br><span class="example">nmap -sn 192.168.1.1/24</span></td><td>Ping Scan – केवल यह पता करता है कि कौन से hosts alive हैं (port scan नहीं करता)।</td></tr>
+        <tr><td>-Pn</td><td class="syntax">-Pn &lt;target&gt;<br><span class="example">nmap -Pn 192.168.1.1</span></td><td>मानता है कि सभी hosts alive हैं – ping को skip करता है (firewall वाले hosts के लिए)।</td></tr>
+        <tr><td>-PS</td><td class="syntax">-PS &lt;portlist&gt;<br><span class="example">nmap -PS22,80,443 192.168.1.1</span></td><td>TCP SYN ping – specified ports पर SYN packet भेजता है।</td></tr>
+        <tr><td>-PA</td><td class="syntax">-PA &lt;portlist&gt;<br><span class="example">nmap -PA22,80 192.168.1.1</span></td><td>TCP ACK ping – ACK packet भेजता है।</td></tr>
+        <tr><td>-PU</td><td class="syntax">-PU &lt;portlist&gt;<br><span class="example">nmap -PU53 192.168.1.1</span></td><td>UDP ping – UDP packet भेजता है।</td></tr>
+        <tr><td>-PY</td><td class="syntax">-PY &lt;portlist&gt;<br><span class="example">nmap -PY22 192.168.1.1</span></td><td>SCTP ping – SCTP INIT packet भेजता है।</td></tr>
+        <tr><td>-PO</td><td class="syntax">-PO &lt;protocol list&gt;<br><span class="example">nmap -PO1,2,4 192.168.1.1</span></td><td>IP Protocol ping – specified IP प्रोटोकॉल के packets भेजता है।</td></tr>
+        <tr><td>--traceroute</td><td class="syntax">--traceroute &lt;target&gt;<br><span class="example">nmap --traceroute 8.8.8.8</span></td><td>Target तक पहुँचने के लिए network path (hops) दिखाता है।</td></tr>
+        <tr><td>--system-dns</td><td class="syntax">--system-dns &lt;target&gt;<br><span class="example">nmap --system-dns google.com</span></td><td>DNS resolution के लिए system के DNS resolver का उपयोग करता है।</td></tr>
+    </table>
+
+    <!-- SCAN TECHNIQUES -->
+    <h2>⚙️ SCAN TECHNIQUES (स्कैन तकनीकें)</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-sS</td><td class="syntax">-sS &lt;target&gt;<br><span class="example">nmap -sS 192.168.1.1</span></td><td>TCP SYN Stealth Scan – आधा कनेक्शन बनाता है, तेज़ और कम दिखता है।</td></tr>
+        <tr><td>-sT</td><td class="syntax">-sT &lt;target&gt;<br><span class="example">nmap -sT 192.168.1.1</span></td><td>TCP Connect Scan – पूरा TCP handshake करता है।</td></tr>
+        <tr><td>-sA</td><td class="syntax">-sA &lt;target&gt;<br><span class="example">nmap -sA 192.168.1.1</span></td><td>TCP ACK Scan – firewall rules का पता लगाने के लिए ACK packets भेजता है।</td></tr>
+        <tr><td>-sW</td><td class="syntax">-sW &lt;target&gt;<br><span class="example">nmap -sW 192.168.1.1</span></td><td>TCP Window Scan – window size के आधार पर port status बताता है।</td></tr>
+        <tr><td>-sM</td><td class="syntax">-sM &lt;target&gt;<br><span class="example">nmap -sM 192.168.1.1</span></td><td>TCP Maimon Scan – FIN/ACK packets भेजता है।</td></tr>
+        <tr><td>-sU</td><td class="syntax">-sU &lt;target&gt;<br><span class="example">nmap -sU 192.168.1.1</span></td><td>UDP Scan – UDP ports के लिए स्कैन करता है (धीमा हो सकता है)।</td></tr>
+        <tr><td>-sN</td><td class="syntax">-sN &lt;target&gt;<br><span class="example">nmap -sN 192.168.1.1</span></td><td>TCP Null Scan – बिना किसी flag के packet भेजता है।</td></tr>
+        <tr><td>-sF</td><td class="syntax">-sF &lt;target&gt;<br><span class="example">nmap -sF 192.168.1.1</span></td><td>TCP FIN Scan – सिर्फ FIN flag से packet भेजता है।</td></tr>
+        <tr><td>-sX</td><td class="syntax">-sX &lt;target&gt;<br><span class="example">nmap -sX 192.168.1.1</span></td><td>TCP Xmas Scan – FIN, PSH, URG flags सभी set होते हैं।</td></tr>
+        <tr><td>--scanflags</td><td class="syntax">--scanflags &lt;flags&gt;<br><span class="example">nmap --scanflags SYN,ACK 192.168.1.1</span></td><td>कस्टम TCP flags के साथ स्कैन करता है।</td></tr>
+        <tr><td>-sZ</td><td class="syntax">-sZ &lt;target&gt;<br><span class="example">nmap -sZ 192.168.1.1</span></td><td>SCTP Cookie Echo Scan (SCTP protocol के लिए)।</td></tr>
+        <tr><td>-sI</td><td class="syntax">-sI &lt;zombie&gt;<br><span class="example">nmap -sI 192.168.1.50:80 192.168.1.1</span></td><td>Idle Scan – zombie host का उपयोग करके बिना पहचाने स्कैन करना।</td></tr>
+        <tr><td>-sO</td><td class="syntax">-sO &lt;target&gt;<br><span class="example">nmap -sO 192.168.1.1</span></td><td>IP Protocol Scan – कौन से IP प्रोटोकॉल (TCP, UDP, ICMP etc.) support हैं।</td></tr>
+        <tr><td>-b</td><td class="syntax">-b &lt;ftp relay&gt;<br><span class="example">nmap -b ftp://user:pass@server:21</span></td><td>FTP Bounce Scan – FTP server के माध्यम से स्कैन करता है (पुरानी तकनीक)।</td></tr>
+    </table>
+
+    <!-- PORT SPECIFICATION -->
+    <h2>🔌 PORT SPECIFICATION AND SCAN ORDER</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-p</td><td class="syntax">-p &lt;port ranges&gt;<br><span class="example">nmap -p22,80,443 192.168.1.1<br>nmap -p U:53,111,T:21-25,80</span></td><td>Specified ports को ही scan करता है। UDP/TCP अलग-अलग specify कर सकते हैं।</td></tr>
+        <tr><td>--exclude-ports</td><td class="syntax">--exclude-ports &lt;port ranges&gt;<br><span class="example">nmap -p 1-1000 --exclude-ports 22,80</span></td><td>कुछ ports को scan से बाहर कर देता है।</td></tr>
+        <tr><td>-F</td><td class="syntax">-F &lt;target&gt;<br><span class="example">nmap -F 192.168.1.1</span></td><td>Fast scan – सिर्फ 100 सबसे common ports scan करता है।</td></tr>
+        <tr><td>-r</td><td class="syntax">-r &lt;target&gt;<br><span class="example">nmap -r 192.168.1.1</span></td><td>Ports को random क्रम में नहीं, बल्कि sequential order में scan करता है।</td></tr>
+        <tr><td>--top-ports</td><td class="syntax">--top-ports &lt;number&gt;<br><span class="example">nmap --top-ports 10 192.168.1.1</span></td><td>सबसे popular ‘number’ ports को scan करता है।</td></tr>
+    </table>
+
+    <!-- SERVICE VERSION DETECTION -->
+    <h2>🔧 SERVICE/VERSION DETECTION</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-sV</td><td class="syntax">-sV &lt;target&gt;<br><span class="example">nmap -sV 192.168.1.1</span></td><td>Open ports पर चल रहे service और उनके version का पता लगाता है।</td></tr>
+        <tr><td>--version-intensity</td><td class="syntax">--version-intensity &lt;0-9&gt;<br><span class="example">nmap -sV --version-intensity 5 192.168.1.1</span></td><td>Version detection की गहराई (intensity) set करता है। 9 = सबसे गहरा।</td></tr>
+        <tr><td>--version-all</td><td class="syntax">--version-all &lt;target&gt;<br><span class="example">nmap -sV --version-all 192.168.1.1</span></td><td>हर port पर हर probe भेजता है (intensity 9 के बराबर)।</td></tr>
+        <tr><td>--version-trace</td><td class="syntax">--version-trace &lt;target&gt;<br><span class="example">nmap -sV --version-trace 192.168.1.1</span></td><td>Version detection के दौरान भेजे गए packets का detailed log दिखाता है।</td></tr>
+    </table>
+
+    <!-- SCRIPT SCAN -->
+    <h2>📜 SCRIPT SCAN (NSE Scripts)</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-sC</td><td class="syntax">-sC &lt;target&gt;<br><span class="example">nmap -sC 192.168.1.1</span></td><td>Default scripts चलाता है (equivalent to --script=default)।</td></tr>
+        <tr><td>--script</td><td class="syntax">--script=&lt;lua scripts&gt;<br><span class="example">nmap --script=http-title,ssh-auth-methods 192.168.1.1</span></td><td>Specified Lua scripts को चलाता है (category या नाम से)।</td></tr>
+        <tr><td>--script-args</td><td class="syntax">--script-args=&lt;args&gt;<br><span class="example">nmap --script=http-title --script-args http.useragent="Mozilla"</span></td><td>Scripts को arguments pass करता है।</td></tr>
+        <tr><td>--script-args-file</td><td class="syntax">--script-args-file &lt;filename&gt;<br><span class="example">nmap --script-args-file args.txt</span></td><td>किसी फ़ाइल से script arguments पढ़ता है।</td></tr>
+        <tr><td>--script-trace</td><td class="syntax">--script-trace &lt;target&gt;<br><span class="example">nmap --script-trace 192.168.1.1</span></td><td>Script द्वारा भेजे/प्राप्त packets को दिखाता है।</td></tr>
+        <tr><td>--script-updatedb</td><td class="syntax">--script-updatedb<br><span class="example">nmap --script-updatedb</span></td><td>Nmap script database को update करता है।</td></tr>
+    </table>
+
+    <!-- OS DETECTION -->
+    <h2>🖥️ OS DETECTION</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-O</td><td class="syntax">-O &lt;target&gt;<br><span class="example">nmap -O 192.168.1.1</span></td><td>Target के operating system का पता लगाने की कोशिश करता है।</td></tr>
+        <tr><td>--osscan-limit</td><td class="syntax">--osscan-limit &lt;target&gt;<br><span class="example">nmap -O --osscan-limit 192.168.1.1</span></td><td>OS detection सिर्फ उन hosts पर करता है जो कम से कम एक open और एक closed port दिखाते हैं।</td></tr>
+        <tr><td>--osscan-guess</td><td class="syntax">--osscan-guess &lt;target&gt;<br><span class="example">nmap -O --osscan-guess 192.168.1.1</span></td><td>अगर exact match न मिले तो भी ज़्यादा से ज़्यादा guess करता है।</td></tr>
+    </table>
+
+    <!-- TIMING AND PERFORMANCE -->
+    <h2>⏱️ TIMING AND PERFORMANCE</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-T&lt;0-5&gt;</td><td class="syntax">-T&lt;0-5&gt;<br><span class="example">nmap -T4 192.168.1.1</span></td><td>Timing template: 0=paranoid, 1=sneaky, 2=polite, 3=normal, 4=aggressive, 5=insane</td></tr>
+        <tr><td>--min-hostgroup / --max-hostgroup</td><td class="syntax">--min-hostgroup &lt;size&gt; --max-hostgroup &lt;size&gt;<br><span class="example">nmap --min-hostgroup 10 --max-hostgroup 50 192.168.1.1/24</span></td><td>Parallel में scan किए जाने वाले hosts के समूह का size तय करता है।</td></tr>
+        <tr><td>--max-retries</td><td class="syntax">--max-retries &lt;tries&gt;<br><span class="example">nmap --max-retries 3 192.168.1.1</span></td><td>Port scan के दौरान retries की अधिकतम संख्या।</td></tr>
+        <tr><td>--min-rtt-timeout<br>--max-rtt-timeout<br>--initial-rtt-timeout</td><td class="syntax">--min-rtt-timeout &lt;time&gt;<br><span class="example">nmap --initial-rtt-timeout 100ms --max-rtt-timeout 300ms</span></td><td>Round-trip time timeout values को manually set करता है।</td></tr>
+        <tr><td>--host-timeout</td><td class="syntax">--host-timeout &lt;time&gt;<br><span class="example">nmap --host-timeout 5m 192.168.1.1</span></td><td>एक host पर scan करने का maximum समय, उसके बाद छोड़ देता है।</td></tr>
+        <tr><td>--scan-delay / --max-scan-delay</td><td class="syntax">--scan-delay &lt;time&gt;<br><span class="example">nmap --scan-delay 1s 192.168.1.1</span></td><td>दो probes के बीच delay डालता है (IDS evasion के लिए)।</td></tr>
+        <tr><td>--min-rate / --max-rate</td><td class="syntax">--min-rate &lt;number&gt; --max-rate &lt;number&gt;<br><span class="example">nmap --min-rate 100 --max-rate 500 192.168.1.1</span></td><td>प्रति सेकंड packets की दर (rate) को नियंत्रित करता है।</td></tr>
+    </table>
+
+    <!-- FIREWALL EVASION -->
+    <h2>🛡️ FIREWALL/IDS EVASION AND SPOOFING</h2>
+    </table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-f</td><td class="syntax">-f &lt;target&gt;<br><span class="example">nmap -f 192.168.1.1</span></td><td>Packet fragmentation – packets को छोटे fragments में तोड़ता है (IDS बाईपास)।</td></tr>
+        <tr><td>--mtu</td><td class="syntax">--mtu &lt;val&gt;<br><span class="example">nmap --mtu 8 192.168.1.1</span></td><td>MTU (Maximum Transmission Unit) को specified value पर set करता है।</td></tr>
+        <tr><td>-D</td><td class="syntax">-D &lt;decoy1,decoy2,ME&gt;<br><span class="example">nmap -D 10.0.0.1,10.0.0.2,ME 192.168.1.1</span></td><td>Decoy hosts – असली IP को छुपाने के लिए झूठे IPs भेजता है।</td></tr>
+        <tr><td>-S</td><td class="syntax">-S &lt;IP_Address&gt;<br><span class="example">nmap -S 10.0.0.5 192.168.1.1</span></td><td>Source IP address spoof करता है।</td></tr>
+        <tr><td>-e</td><td class="syntax">-e &lt;iface&gt;<br><span class="example">nmap -e eth0 192.168.1.1</span></td><td>Specified network interface का उपयोग करता है।</td></tr>
+        <tr><td>-g / --source-port</td><td class="syntax">-g &lt;portnum&gt;<br><span class="example">nmap -g 53 192.168.1.1</span></td><td>Source port number को fake करता है (e.g., port 53 DNS जैसा दिखाने के लिए)।</td></tr>
+        <tr><td>--proxies</td><td class="syntax">--proxies &lt;url1,url2&gt;<br><span class="example">nmap --proxies http://proxy1:8080,http://proxy2:8080 192.168.1.1</span></td><td>HTTP/SOCKS4 proxy chain के माध्यम से स्कैन करता है।</td></tr>
+        <tr><td>--data</td><td class="syntax">--data &lt;hex string&gt;<br><span class="example">nmap --data 0xDEADBEEF 192.168.1.1</span></td><td>Raw binary data (hex) को packets में जोड़ता है।</td></tr>
+        <tr><td>--data-string</td><td class="syntax">--data-string &lt;string&gt;<br><span class="example">nmap --data-string "HELLO" 192.168.1.1</span></td><td>Text string को packets में शामिल करता है।</td></tr>
+        <tr><td>--data-length</td><td class="syntax">--data-length &lt;num&gt;<br><span class="example">nmap --data-length 200 192.168.1.1</span></td><td>Random data of given length को packets में जोड़ता है।</td></tr>
+        <tr><td>--ip-options</td><td class="syntax">--ip-options &lt;options&gt;<br><span class="example">nmap --ip-options "L 10.0.0.1" 192.168.1.1</span></td><td>IP header में options जोड़ता है (जैसे Loose Source Routing)।</td></tr>
+        <tr><td>--ttl</td><td class="syntax">--ttl &lt;val&gt;<br><span class="example">nmap --ttl 50 192.168.1.1</span></td><td>IP TTL (Time To Live) value को set करता है।</td></tr>
+        <tr><td>--spoof-mac</td><td class="syntax">--spoof-mac &lt;mac/prefix/vendor&gt;<br><span class="example">nmap --spoof-mac 00:11:22:33:44:55</span></td><td>MAC address को spoof करता है (vendor name भी दे सकते हैं जैसे Apple, Cisco)।</td></tr>
+        <tr><td>--badsum</td><td class="syntax">--badsum &lt;target&gt;<br><span class="example">nmap --badsum 192.168.1.1</span></td><td>गलत TCP/UDP checksum वाले packets भेजता है (कुछ firewalls को पहचानने के लिए)।</td></tr>
+    </table>
+
+    <!-- OUTPUT -->
+    <h2>📄 OUTPUT (आउटपुट)</h2>
+    <table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-oN</td><td class="syntax">-oN &lt;file&gt;<br><span class="example">nmap -oN result.txt 192.168.1.1</span></td><td>Normal output को फ़ाइल में save करता है।</td></tr>
+        <tr><td>-oX</td><td class="syntax">-oX &lt;file&gt;<br><span class="example">nmap -oX result.xml 192.168.1.1</span></td><td>XML format में output save करता है।</td></tr>
+        <tr><td>-oS</td><td class="syntax">-oS &lt;file&gt;<br><span class="example">nmap -oS result.script 192.168.1.1</span></td><td>ScRipT KIddIe style output (1337 speak में)।</td></tr>
+        <tr><td>-oG</td><td class="syntax">-oG &lt;file&gt;<br><span class="example">nmap -oG result.gnmap 192.168.1.1</span></td><td>Grepable output – tools के साथ parse करने के लिए।</td></tr>
+        <tr><td>-oA</td><td class="syntax">-oA &lt;basename&gt;<br><span class="example">nmap -oA scan 192.168.1.1</span></td><td>तीनों formats (.nmap, .xml, .gnmap) एक साथ generate करता है।</td></tr>
+        <tr><td>-v</td><td class="syntax">-v &lt;target&gt;<br><span class="example">nmap -v 192.168.1.1</span></td><td>Verbose output – ज़्यादा जानकारी दिखाता है।</td></tr>
+        <tr><td>-d</td><td class="syntax">-d &lt;target&gt;<br><span class="example">nmap -d 192.168.1.1</span></td><td>Debugging output (बहुत detailed)।</td></tr>
+        <tr><td>--reason</td><td class="syntax">--reason &lt;target&gt;<br><span class="example">nmap --reason 192.168.1.1</span></td><td>बताता है कि port open/closed क्यों है (जैसे SYN-ACK मिला, RST मिला आदि)।</td></tr>
+        <tr><td>--open</td><td class="syntax">--open &lt;target&gt;<br><span class="example">nmap --open 192.168.1.1</span></td><td>सिर्फ open (या open|filtered) ports दिखाता है, closed नहीं।</td></tr>
+        <tr><td>--packet-trace</td><td class="syntax">--packet-trace &lt;target&gt;<br><span class="example">nmap --packet-trace 192.168.1.1</span></td><td>हर भेजा और प्राप्त packet को दिखाता है।</td></tr>
+        <tr><td>--iflist</td><td class="syntax">--iflist<br><span class="example">nmap --iflist</span></td><td>Available network interfaces और routes की list दिखाता है।</td></tr>
+        <tr><td>--append-output</td><td class="syntax">--append-output &lt;file&gt;<br><span class="example">nmap -oN result.txt --append-output 192.168.1.1</span></td><td>मौजूदा फ़ाइल में output जोड़ता है (overwrite नहीं करता)।</td></tr>
+        <tr><td>--stylesheet</td><td class="syntax">--stylesheet &lt;path/URL&gt;<br><span class="example">nmap -oX result.xml --stylesheet https://nmap.org/data/nmap.xsl</span></td><td>XML output के लिए custom XSLT stylesheet सेट करता है।</td></tr>
+    </table>
+
+    <!-- MISC -->
+    <h2>🔧 MISC (अन्य उपयोगी)</h2>
+    </table>
+        <tr><th>Command</th><th>Syntax & Example</th><th>क्या होता है?</th></tr>
+        <tr><td>-6</td><td class="syntax">-6 &lt;target&gt;<br><span class="example">nmap -6 2001:db8::1</span></td><td>IPv6 scanning enable करता है।</td></tr>
+        <tr><td>-A</td><td class="syntax">-A &lt;target&gt;<br><span class="example">nmap -A 192.168.1.1</span></td><td>Aggressive scan – OS, version, script, traceroute सब एक साथ (-O -sV -sC --traceroute)।</td></tr>
+    </table>
+
+    <div class="note">
+        <strong>📌 नोट:</strong> सभी कमांड्स को उचित अनुमति (permission) के बिना केवल अपने नेटवर्क पर ही use करें। दूसरों के नेटवर्क पर बिना अनुमति Nmap चलाना illegal हो सकता है।
+    </div>
+    <footer>
+        Nmap Feature Guide - हर command के syntax, example और उपयोग के साथ | Created for learning purpose
+    </footer>
+</div>
+</body>
+</html>
