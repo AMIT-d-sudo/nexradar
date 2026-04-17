@@ -18,7 +18,6 @@ Nmap के XML आउटपुट को पढ़ता है। मॉडल
 - खुले पोर्ट के पैटर्न को पहचानना  
 - असामान्य सर्विस वर्जन का पता लगाना  
 - हर होस्ट के लिए **जोखिम स्कोर (0-100)** निकालना
-- ## 🧠 How AI Works
 Nexradar uses a **Random Forest classifier** trained on over 10,000 Nmap scan results. 
 It identifies:
 
