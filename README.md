@@ -35,7 +35,12 @@ It identifies:
 
 - **Nmap** (>=7.80) – [डाउनलोड](https://nmap.org/download.html)  
 - **Python 3.8+**  
-- Python पैकेज: `nmap`, `python-nmap` 'cryptography, `psutil`, `requests`'dnspython'  
+- Python पैकेज: `nmap`, `python-nmap` 'cryptography, `psutil`, `requests`'dnspython'
+## 🎯 Use Cases
+
+- **Security Analysts** – Quickly triage suspicious hosts
+- **Penetration Testers** – Automate post-scan analysis
+- **Students** – Learn how ML applies to cybersecurity
 
 ## ⚙️ इंस्टॉलेशन (Installation)
 
