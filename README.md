@@ -31,8 +31,11 @@ Nmap के XML आउटपुट को पढ़ता है। मॉडल
 
 ```bash
 # 1. रिपॉजिटरी क्लोन करें
-git clone https://github.com/your-username/nexradar.git
+git clone https://github.com/AMIT-d-sudo/nexradar
 cd nexradar
 
 # 2. आवश्यक पैकेज इंस्टॉल करें
 pip install -r requirements.txt
+
+# 3. फिर रन करें
+python main.py
